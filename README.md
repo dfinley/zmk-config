@@ -250,29 +250,40 @@ create a virtual environment just for the project), and install the required
 dependencies to it:
 
 ```sh
-$ pip install -r support/requirements.txt
+$ pip install -r zephyr/scripts/requirements.txt
 ```
+
+> **Note:** The `zmk-tri-state` module uses `zmk_behavior_invoke_binding` from
+> an unmerged ZMK PR ([#1984](https://github.com/zmkfirmware/zmk/pull/1984)),
+> which is not present in this fork. After running `west update`, you need to
+> patch `modules/zmk-tri-state/behaviors/behavior_tri_state.c`:
+>
+> 1. Remove all `#if IS_ENABLED(CONFIG_ZMK_SPLIT)` / `source` field blocks
+> 2. Replace `zmk_behavior_invoke_binding(binding, event, true)` with
+>    `behavior_keymap_binding_pressed(binding, event)`
+> 3. Replace `zmk_behavior_invoke_binding(binding, event, false)` with
+>    `behavior_keymap_binding_released(binding, event)`
 
 You can build the firmware for all keyboards I have with the following command:
 
 ```sh
-$ west build -p -d build/corne-left -b nice_nano_v2 -- \
-    -DSHIELD=corne_left \
+$ west build -s zmk/app -p -d build/corne-left -b nice_nano_v2 -- \
+    -DSHIELD="corne_left nice_view_adapter nice_view" \
     -DDTS_EXTRA_CPPFLAGS="-DUSE_MOLOCK=1" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
-  && west build -p -d build/corne-right -b nice_nano_v2 -- \
-    -DSHIELD=corne_right \
+  && west build -s zmk/app -p -d build/corne-right -b nice_nano_v2 -- \
+    -DSHIELD="corne_right nice_view_adapter nice_view" \
     -DDTS_EXTRA_CPPFLAGS="-DUSE_MOLOCK=1" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
-  && west build -p -d build/lily-left -b nice_nano_v2 -- \
+  && west build -s zmk/app -p -d build/lily-left -b nice_nano_v2 -- \
     -DSHIELD="lily58_left nice_view_adapter nice_view" \
     -DDTS_EXTRA_CPPFLAGS="-DUSE_MOLOCK=1" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
-  && west build -p -d build/lily-right -b nice_nano_v2 -- \
+  && west build -s zmk/app -p -d build/lily-right -b nice_nano_v2 -- \
     -DSHIELD="lily58_right nice_view_adapter nice_view" \
     -DDTS_EXTRA_CPPFLAGS="-DUSE_MOLOCK=1" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
-  && west build -p -d build/settings-reset -b nice_nano_v2 -- \
+  && west build -s zmk/app -p -d build/settings-reset -b nice_nano_v2 -- \
     -DSHIELD="settings_reset" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config"
 ```
