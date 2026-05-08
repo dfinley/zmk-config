@@ -1,6 +1,8 @@
 .direnv
 .west/
+.DS_Store
 build/
 modules/
 zephyr/
 zmk/
+zephyr-sdk-*/
