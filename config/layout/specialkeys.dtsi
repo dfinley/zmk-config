@@ -197,7 +197,7 @@
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&kp GLOBE>, <&caps_word>;
+      bindings = <&kp GLOBE>, <&kp CAPS>;
     };
 
     mouscrl: mouse_scroller {
