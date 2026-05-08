@@ -6,3 +6,4 @@ modules/
 zephyr/
 zmk/
 zephyr-sdk-*/
+firmware-archive/
