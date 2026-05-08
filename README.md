@@ -257,16 +257,16 @@ You can build the firmware for all keyboards I have with the following command:
 
 ```sh
 $ west build -s zmk/app -p -d build/corne-left -b nice_nano/nrf52840/zmk -- \
-    -DSHIELD="corne_left nice_view_adapter nice_view" \
+    -DSHIELD="corne_left nice_view_adapter nice_view_gem" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/corne-right -b nice_nano/nrf52840/zmk -- \
-    -DSHIELD="corne_right nice_view_adapter nice_view" \
+    -DSHIELD="corne_right nice_view_adapter nice_view_gem" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/lily-left -b nice_nano/nrf52840/zmk -- \
-    -DSHIELD="lily58_left nice_view_adapter nice_view" \
+    -DSHIELD="lily58_left nice_view_adapter nice_view_gem" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/lily-right -b nice_nano/nrf52840/zmk -- \
-    -DSHIELD="lily58_right nice_view_adapter nice_view" \
+    -DSHIELD="lily58_right nice_view_adapter nice_view_gem" \
     -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/settings-reset -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="settings_reset" \
