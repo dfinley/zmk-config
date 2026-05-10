@@ -1,7 +1,7 @@
 # ZMK Custom Layouts
 
-[![ZMK version](https://img.shields.io/badge/ZMK-3.5-blue)](https://zmk.dev/)
-[![Firmware build](https://img.shields.io/github/actions/workflow/status/Townk/zmk-config/build.yml?label=firmware%20build)](https://github.com/Townk/zmk-config/actions/workflows/build.yml)
+[![Zephyr version](https://img.shields.io/badge/Zephyr-4.1-blue)](https://zmk.dev/)
+[![Firmware build](https://img.shields.io/github/actions/workflow/status/dfinley/zmk-config/build.yml?label=firmware%20build)](https://github.com/dfinley/zmk-config/actions/workflows/build.yml)
 
 This repository contains the ZMK user configuration for all my keyboards that
 use the [ZMK](https://zmk.dev/) firmware.
@@ -258,19 +258,19 @@ You can build the firmware for all keyboards I have with the following command:
 ```sh
 $ west build -s zmk/app -p -d build/corne-left -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="corne_left nice_view_adapter nice_view_gem" \
-    -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
+    -DZMK_CONFIG="$ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/corne-right -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="corne_right nice_view_adapter nice_view_gem" \
-    -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
+    -DZMK_CONFIG="$ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/lily-left -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="lily58_left nice_view_adapter nice_view_gem" \
-    -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
+    -DZMK_CONFIG="$ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/lily-right -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="lily58_right nice_view_adapter nice_view_gem" \
-    -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config" \
+    -DZMK_CONFIG="$ZMK_CONFIG_DIR/config" \
   && west build -s zmk/app -p -d build/settings-reset -b nice_nano/nrf52840/zmk -- \
     -DSHIELD="settings_reset" \
-    -DZMK_CONFIG="$TOWNK_ZMK_CONFIG_DIR/config"
+    -DZMK_CONFIG="$ZMK_CONFIG_DIR/config"
 ```
 
 After the first build, you can simplify the build command to the following:
@@ -288,7 +288,7 @@ used in the documentation, by running the `update-layout-maps.sh` script from
 the `support` directory:
 
 ```sh
-$ cd "$TOWNK_ZMK_CONFIG_DIR"
+$ cd "$ZMK_CONFIG_DIR"
 $ ./support/update-layout-maps.sh
 ```
 
